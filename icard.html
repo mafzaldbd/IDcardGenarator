@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>icard</title>
+    <link rel="stylesheet" href="icard.css">
+    
+</head>
+<body>
+
+<div id="social"> 
+    <span style="font-family: myfont;">contact us:</span>
+</div>
+
+
+   <h1> Identity Card Generater </h1>
+   
+
+
+    <form id="form" >
+       <div id="input">
+            <h3>Fill the form</h3><br>
+            <input type="text" id="fname" placeholder="First Name  "><br>
+            <input type="text" id="lname" placeholder="Last Name"><br>
+            <input type="text" id="idnumber" placeholder="ID Number   (must be in 8 digit)"><br>
+            <input type="text" id="father" placeholder="Father's Name"><br>
+            <input type="tel" pattern="[0-9]{5}[0-9]{5}" id="p_number" placeholder="Mobile Number"><br>
+            <input type="address" id="full_add" placeholder="full Address"><br>
+            <span> Birth Date:</span> <input type="date" id="b_date"><br><br>
+            <span> Blood Group:</span>
+            <select id="b_group" value="">
+                <option > A+ </option>
+                <option > A- </option>
+                <option > AB+ </option>
+                <option > AB- </option>
+                <option > B+ </option>
+                <option > B- </option>
+                <option > O+ </option>
+                <option > O- </option>
+            </select> <br><br>
+              <span> Upload Photo:</span>   <input type="file" accept="image/*" onchange="preview_image(event)"><br><br>
+              <span> Upload Sign:</span>   <input type="file" accept="image/*" onchange="preview_image2(event)"><br>
+
+        </div> <br>
+        <input type="button" onclick="fun()" value="Generate" id="gen">
+     
+    </form>
+    <button id="print" onclick="prt()">Print</button> 
+
+
+<div id="card">
+
+
+    <div class="bor" id="bor">
+        <div class="inside">
+
+            <div class="top">
+                  <div class="proct">PROCTORIAL DEPARTMENT</div>
+                  <div class="jmi">JAMIA MILLIA ISLAMIA</div>
+                  <div class="cen">(A CENTRAL UNIVERSITY)</div>
+            </div>
+
+            <div class="middle1">
+               
+               <div class="sign"> <img id="sign" src="sign.jpg" height="33px" width="80px"> </div>
+                <div class="id" id="idd">20184205</div><br><br>         
+                <div class="photo"> <img id="pic" src="photo.jpg" height="85px" width="80px"> </div><br>
+            
+                <div class="name" id="nme">MOHD Afzal</div>
+                <div class="dip" >Dip. Computer Engg. -I-<br>Yr.</div>
+            </div>
+            
+            <div class="middle2"> 
+                <div class ="uni" id="univer"> University Polytechnic</div> 
+                <div class ="fac"> FACULTY OF ENGINEERING & TECHNOLOGY</div>
+            </div>
+
+            <div class="bottom"> 
+                <div > <img class="slogo" src="sslogo.jpg" height="65px" width="65px"> </div>
+                <div class="idate"> Issue Date: <span class="date"> 27/09/2018</span></div>
+                <div class="idate"> Validity: 30/05/2021</div>
+                <div > <img class="logo" src="jmi.png" height="57px" width="55px"> </div>
+                <div > <img class="proc" src="prot.jpeg" height="70px" width="165px"> </div>
+                <div class="chief">Chief Proctor</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+         <!--Backside html-->
+   
+
+
+         <div class="bor2">
+            <div class="inside2">
+    
+                <div class="top2">
+                  <div class="bar">
+                      <img src="bbb.JPG" height="40" width="160">
+                      <div id="id2">20184205</div>
+                  </div>               
+                </div>
+    
+    
+    
+                <div class="middle12">
+                    <div class="always">ALWAYS CARRY THIS CARD AND SURRENDER <br> WHEN ASKED BY PROCTORIAL STAFF</div>
+                </div>
+                
+                
+    
+                <div class="middle22">
+                    <div class="blood">
+                        <div class="bgroup">Blood Group</div>
+                        <div id="group">AB+</div>
+                    </div>
+                  
+                     <div class="info">Student info.</div>
+                     <div class="indian">Indian</div>
+                    
+                   <div class="data">
+                        Fr Name : <span id="fathername">Mohd Mujahid Hasan</span> <br> 
+                        Birth Date : <span id="bdate">24-JUN-00</span> <br>
+                        Contact Number : <span id="phone">8938947066</span> <br>
+                        Address : <span id="address"> ZAKIR NAGAR ,OKHLA NEW DELHI</span>
+    
+                   </div>
+                </div>
+    
+    
+    
+    
+                <div class="middle23">
+                    <div class="lost">If this card is lost, lodge FIR and Report to <br>cheif proctor and librarian</div>
+                </div> 
+    
+    
+    
+                <div class="bottom2"> 
+                    <div class="emergency">Emergency contact No. (Security Centre):<br> 9876543210</div>
+                </div>
+    
+    
+            </div>
+    
+        </div>
+    
+
+
+
+</div>
+   
+
+    <script>
+
+      var brr = document.getElementById("card");
+      brr.style.display="none";
+      var pt = document.getElementById("print");
+      pt.style.display="none";
+
+
+ function fun(){
+
+       var fname = document.getElementById("fname");
+       var lname = document.getElementById("lname");
+       var id = document.getElementById("idnumber");
+       var img = document.getElementById("img");
+       
+       var temp = fname.value+" " +lname.value;
+       
+       document.getElementById("idd").innerHTML=id.value;
+       document.getElementById("nme").innerHTML=temp.toLocaleUpperCase();
+
+       
+       var frname = document.getElementById("father");
+        var phone = document.getElementById("p_number");
+        var addrs = document.getElementById("full_add");
+        var bdate = document.getElementById("b_date");
+        var bgroup = document.getElementById("b_group");
+
+        document.getElementById("fathername").innerHTML=frname.value;
+        document.getElementById("bdate").innerHTML=bdate.value;
+        document.getElementById("phone").innerHTML="<br>"+phone.value;
+        document.getElementById("group").innerHTML=bgroup.value;
+        var ad =addrs.value;
+        document.getElementById("address").innerHTML=ad.toLocaleUpperCase();
+        document.getElementById("id2").innerHTML=id.value;
+        
+
+
+       document.getElementById("form").style.display="none";   
+          brr.style.display="block";
+         pt.style.display="block";
+        document.getElementById("input").style.display="none";
+        document.getElementById('footer').style.position="relative";
+       
+    
+        return true;
+    }
+
+    
+      function prt(){
+          document.getElementById("form").style.display="none";   
+          window.print();
+      }
+    
+      function preview_image(event) 
+      {
+          var reader = new FileReader();
+          reader.onload = function()
+          {
+           var output = document.getElementById('pic');
+           output.src = reader.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+       }
+
+      function preview_image2(event) 
+      {
+          var reader = new FileReader();
+          reader.onload = function()
+          {
+           var sig = document.getElementById('sign');
+           sig.src = reader.result;
+
+          }
+          reader.readAsDataURL(event.target.files[0]);
+       }
+       
+    </script>
+   
+</body>
+</html>
